@@ -9,6 +9,10 @@ $(function(){
     );
   });
 
+  schedule.on('invalid', function(model, message){
+    alert(message);
+  });
+
   schedule.set({
     //title: 'Backbone.js ハンズオン',
     datetime: moment('2013-10-24 9:30')
