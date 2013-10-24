@@ -9,7 +9,8 @@ $(function(){
     var title = $('input[name="title"]').val();
     var datetime = $('input[name="datetime"]').val();
 
-    schedules.add({title: title, datetime: datetime});
+    schedules.add({title: title, datetime: moment(datetime)});
+  });
 
     console.log(schedules.pop());
   });
