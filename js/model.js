@@ -16,7 +16,10 @@ App.Schedule = Backbone.Model.extend({
   },
   formatDateTime: function(f){
     return this.get('datetime').format(f);
-  }
+  },
+  show: function(){
+    return this.formatDateTime('MM月DD日 HH時MM分') + ' : ' + this.get('title');
+  },
 });
 
 App.Schedules = Backbone.Collection.extend({
