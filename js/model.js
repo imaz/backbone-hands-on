@@ -7,6 +7,9 @@ App.Schedule = Backbone.Model.extend({
                 return '日時は必須です!!'
               }
               if(!moment.isMoment(attrs.datetime)){
+                return '日時がノットモーメントです!!'
+              }
+              if(!attrs.datetime.isValid()){
                 return '日時が不正です!!'
               }
             }
