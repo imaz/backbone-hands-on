@@ -22,8 +22,19 @@ App.CalendarView = Backbone.View.extend({
     this.render();
   },
   render: function(){
-    // this.el
-    // this.$el
+    // this.el, this.$el などが使える
     // this.$('xxx') : this.$el.find('xxx') と同じ
+
+    var current = moment();
+
+    var $tbody = this.$('tbody');
+    var $tr = $('<tr>');
+
+    for (var i = 0; i < 7; i++){
+      var $td = $('<td>');
+      $tr.append($td);
+    }
+
+    $tr.appendTo($tbody);
   }
 });
