@@ -1,6 +1,8 @@
 window.App = {};
 
 $(function(){
+  var schedules = new App.Schedules();
+
   $('.createForm').on('submit', function(e){
     e.preventDefault();
 
@@ -8,6 +10,8 @@ $(function(){
     , datetime = $('input[name="datetime"]').val()
     ;
 
-    console.log(title, datetime);
+    schedules.add({title: title, datetime: datetime});
+
+    console.log(schedules.pop());
   });
 });
