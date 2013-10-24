@@ -25,16 +25,24 @@ App.CalendarView = Backbone.View.extend({
     // this.el, this.$el などが使える
     // this.$('xxx') : this.$el.find('xxx') と同じ
 
+    var $caption= this.$('caption');
     var current = moment();
 
+    $caption.text(current.format('YYYY年MM月'));
+
     var $tbody = this.$('tbody');
-    var $tr = $('<tr>');
+    currentDay = moment().startOf('month').startOf('week')
+    endDay = moment().endOf('month');
 
-    for (var i = 0; i < 7; i++){
-      var $td = $('<td>');
-      $tr.append($td);
+    while(currentDay <= endDay){
+      var $tr = $('<tr>');
+      for (var i = 0; i < 7; i++){
+        var $td = $('<td>');
+        $td.text(currentDay.format('DD'));
+        $tr.append($td);
+        currentDay.add(1, 'day');
+      }
+      $tr.appendTo($tbody);
     }
-
-    $tr.appendTo($tbody);
   }
 });
