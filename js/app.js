@@ -14,7 +14,7 @@ $(function(){
   });
 
   schedule.set({
-    title: 'Backbone.js ハンズオン',
-    datetime: moment('2013-10-34 9:30')
+    //title: 'Backbone.js ハンズオン',
+    datetime: moment('2013-10-24 9:30')
   }, {validate: true});
 });

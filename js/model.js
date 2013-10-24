@@ -1,4 +1,8 @@
 App.Schedule = Backbone.Model.extend({
+  defaults: {
+              title: '予定あり',
+              datetime: null
+            },
   validate: function(attrs){
               if(!attrs.title){
                 return 'タイトルは必須です!!'
