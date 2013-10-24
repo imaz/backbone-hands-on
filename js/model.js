@@ -1,22 +1,22 @@
 App.Schedule = Backbone.Model.extend({
   defaults: {
-              title: '予定あり',
-              datetime: null
-            },
+    title: '予定あり',
+    datetime: null
+  },
   validate: function(attrs){
-              if(!attrs.title){
-                return 'タイトルは必須です!!'
-              }
-              if(!attrs.datetime){
-                return '日時は必須です!!'
-              }
-              if(!moment.isMoment(attrs.datetime) || !attrs.datetime.isValid()){
-                return '日時が不正です!!'
-              }
-            },
+    if(!attrs.title){
+      return 'タイトルは必須です!!'
+    }
+    if(!attrs.datetime){
+      return '日時は必須です!!'
+    }
+    if(!moment.isMoment(attrs.datetime) || !attrs.datetime.isValid()){
+      return '日時が不正です!!'
+    }
+  },
   formatDateTime: function(f){
-                    return this.get('datetime').format(f);
-                  }
+    return this.get('datetime').format(f);
+  }
 });
 
 App.Schedules = Backbone.Collection.extend({
