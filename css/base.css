@@ -1,0 +1,13 @@
+#timenow-box {
+  background-color: #336;
+  width: 100px;
+  height: 100px;
+  color: #99e;
+}
+
+#birthday-box {
+  background-color: #663;
+  width: 100px;
+  height: 100px;
+  color: #cc6;
+}
