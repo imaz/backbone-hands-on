@@ -15,6 +15,7 @@
   </head>
 
   <body>
+
     <form class='createForm'>
       <h3>タイトル</h3>
       <p><input type='text' name='title' /></p>
@@ -23,7 +24,16 @@
       <p><input type='datetime-local' name='datetime' value='2013-10-24T09:30:00'></p>
       <p><input type='submit' /></p>
     </form>
+
+    <form class='filterForm'>
+      <h3>フィルタ</h3>
+      <p><input type='date' name='filterDate' value='2013-10-24'></p>
+      <p><input type='submit' /></p>
+    </form>
+
+    <p class='count'></p>
     <ul class='list'>
     </ul>
+
   </body>
 </html>
