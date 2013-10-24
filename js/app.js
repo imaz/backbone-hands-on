@@ -2,11 +2,17 @@ window.App = {};
 
 $(function(){
   var schedules = new App.Schedules();
+
   var appendSchedule = function(model){
     var $li = $('<li>');
     $li.html(model.show());
     $('.list').append($li)
   };
+
+  var createFormView = new App.CreateFormView({
+    el: '.createForm', // this に入ってくるのかー!!
+    collection: schedules
+  });
 
   $('.createForm').on('submit', function(e){
     e.preventDefault();
