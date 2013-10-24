@@ -15,3 +15,15 @@ App.CreateFormView = Backbone.View.extend({
     }, {validate: true});
   }
 });
+
+App.CalendarView = Backbone.View.extend({
+  initialize: function(){
+    // これ便利だー onload で定義後1回呼ぶみたいなの書かなくて良いのか
+    this.render();
+  },
+  render: function(){
+    // this.el
+    // this.$el
+    // this.$('xxx') : this.$el.find('xxx') と同じ
+  }
+});
