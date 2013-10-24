@@ -13,5 +13,8 @@ App.Schedule = Backbone.Model.extend({
               if(!moment.isMoment(attrs.datetime) || !attrs.datetime.isValid()){
                 return '日時が不正です!!'
               }
-            }
+            },
+  formatDateTime: function(f){
+                    return this.get('datetime').format(f);
+                  }
 });
