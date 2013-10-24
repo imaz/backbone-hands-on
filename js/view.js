@@ -18,7 +18,7 @@ App.CreateFormView = Backbone.View.extend({
 
 App.CalendarView = Backbone.View.extend({
   initialize: function(){
-    // これ便利だー onload で定義後1回呼ぶみたいなの書かなくて良いのか
+    this.current = moment();
     this.render();
   },
   render: function(){
@@ -26,13 +26,13 @@ App.CalendarView = Backbone.View.extend({
     // this.$('xxx') : this.$el.find('xxx') と同じ
 
     var $caption= this.$('caption');
-    var current = moment();
-
-    $caption.text(current.format('YYYY年MM月'));
+    $caption.text(this.current.format('YYYY年MM月'));
 
     var $tbody = this.$('tbody');
-    currentDay = moment().startOf('month').startOf('week')
-    endDay = moment().endOf('month');
+    currentDay = this.current.clone().startOf('month').startOf('week')
+    endDay = this.current.clone().endOf('month');
+
+    $tbody.empty();
 
     while(currentDay <= endDay){
       var $tr = $('<tr>');
@@ -44,5 +44,17 @@ App.CalendarView = Backbone.View.extend({
       }
       $tr.appendTo($tbody);
     }
+  },
+  toPrev: function(){
+    this.current.subtract(1, 'month');
+    this.render();
+  },
+  toNext: function(){
+    this.current.add(1, 'month');
+    this.render();
+  },
+  toToday: function(){
+    this.current = moment();
+    this.render();
   }
 });
