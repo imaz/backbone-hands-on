@@ -12,6 +12,13 @@ $(function(){
     schedules.add({title: title, datetime: moment(datetime)}, {validate: true});
   });
 
-    console.log(schedules.pop());
+  schedules.on('invalid', function(model, message){
+    alert(message);
+  });
+
+  schedules.on('add', function(model){
+    $li = $('<li>');
+    $li.html(model.show());
+    $('.list').append($li)
   });
 });
