@@ -6,7 +6,7 @@ $(function(){
   $('.createForm').on('submit', function(e){
     e.preventDefault();
 
-    var title = $('input[name="title"]').val();
+    var title = $('input[name="title"]').val() || undefined; // デフォルト値が入るようにする(良くないコードらしい)
     var datetime = $('input[name="datetime"]').val();
 
     schedules.add({title: title, datetime: moment(datetime)}, {validate: true});
