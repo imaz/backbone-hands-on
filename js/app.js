@@ -6,9 +6,8 @@ $(function(){
   $('.createForm').on('submit', function(e){
     e.preventDefault();
 
-    var title = $('input[name="title"]').val()
-    , datetime = $('input[name="datetime"]').val()
-    ;
+    var title = $('input[name="title"]').val();
+    var datetime = $('input[name="datetime"]').val();
 
     schedules.add({title: title, datetime: datetime});
 
