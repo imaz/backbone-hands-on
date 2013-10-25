@@ -39,14 +39,20 @@ App.CalendarView = Backbone.View.extend({
   toPrev: function(){
     this.current.subtract(1, 'month');
     this.render();
+
+    App.router.navigate(this.current.format('YYYY/MM'));
   },
   toNext: function(){
     this.current.add(1, 'month');
     this.render();
+
+    App.router.navigate(this.current.format('YYYY/MM'));
   },
   toToday: function(){
     this.current = moment();
     this.render();
+
+    App.router.navigate();
   }
 });
 
