@@ -10,11 +10,6 @@ $(function(){
     {datetime: moment('2013-09-30 8:00')}
   ])
 
-  var createFormView = new App.CreateFormView({
-    el: '.createForm', // this に入ってくるのかー!!
-    collection: schedules
-  });
-
   var calendarView = new App.CalendarView({
     el: '.calendar',
     collection: schedules
