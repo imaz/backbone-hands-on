@@ -44,25 +44,17 @@ App.CalendarView = Backbone.View.extend({
 
     while(currentDay <= endDay){
       var $tr = $('<tr>');
+      $tr.appendTo($tbody);
+
       for (var i = 0; i < 7; i++){
-        var $td = $('<td>');
-
-        var $date = $('<div class="calendar-date">');
-        $date.text(currentDay.format('DD'));
-
-        var $ul = $('<ul class="calendar-list">');
-        _.each(this.collection.findByDate(currentDay), function(schedule){
-          var $li = $('<li>');
-          $li.text(schedule.show());
-          $ul.append($li);
+        var cell = new App.CalendarCellView({
+          collection: this.collection,
+          date: currentDay.clone()
         });
 
-        $td.append($date, $ul)
-        $tr.append($td);
-
+        $tr.append(cell.el);
         currentDay.add(1, 'day');
       }
-      $tr.appendTo($tbody);
     }
   },
   toPrev: function(){
@@ -78,3 +70,27 @@ App.CalendarView = Backbone.View.extend({
     this.render();
   }
 });
+
+App.CalendarCellView = Backbone.View.extend({
+  tagName: 'td', // new したときに要素ができる elと同じ
+  initialize: function(options){
+    this.date = options.date;
+    this.render();
+  },
+  template:
+    '<div class="calendar-date"><%= date.format("MM/DD") %></div>' +
+    '<ul class="calendar-list"></ul>',
+  render: function(){
+    var html = _.template(this.template, {date: this.date});
+    this.$el.html(html);
+
+    var $ul = this.$('ul');
+    _.each(this.collection.findByDate(this.date), function(schedule){
+      var $li = $('<li>');
+      $li.text(schedule.show());
+      $ul.append($li);
+    });
+
+    this.$el.append($ul);
+  }
+})
