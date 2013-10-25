@@ -120,6 +120,9 @@ App.FormDialogView = Backbone.View.extend({
       this.$title.val(this.model.get('title'));
       this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
       this.$('.dialog-removeBtn').show();
+    } else {
+      this.$datetime.val(moment().format('YYYY-MM-DDTHH:mm'));
+      this.$('.dialog-removeBtn').hide();
     }
     this.$el.show();
   },
@@ -132,7 +135,6 @@ App.FormDialogView = Backbone.View.extend({
     this.$el.hide();
     this.$title.val('');
     this.$datetime.val('');
-    this.$('.dialog-removeBtn').hide();
   },
   onSubmit: function(e){
     e.preventDefault();
