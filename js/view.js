@@ -122,7 +122,8 @@ App.CalendarItemView = Backbone.View.extend({
 
 App.FormDialogView = Backbone.View.extend({
   events: {
-    'click .dialog-close': 'close'
+    'click .dialog-close': 'close',
+    'submit form': 'onSubmit'
   },
 
   initialize: function(){
@@ -141,5 +142,12 @@ App.FormDialogView = Backbone.View.extend({
   },
   close: function(){
     this.$el.hide();
+  },
+  onSubmit: function(e){
+    e.preventDefault();
+
+    var title = this.$title.val();
+    var datetime = this.$datetime.val();
+    console.log(title,datetime);
   }
 });
