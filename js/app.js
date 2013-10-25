@@ -30,20 +30,4 @@ $(function(){
     el: '.calendar-control',
     collection: schedules
   });
-
-  $('.calendar-newBtn').on('click', function(){
-    formDialogView.open();
-  });
-
-  $('.calendar-prevBtn').on('click', function(){
-    calendarView.toPrev();
-  });
-
-  $('.calendar-nextBtn').on('click', function(){
-    calendarView.toNext();
-  });
-
-  $('.calendar-todayBtn').on('click', function(){
-    calendarView.toToday();
-  });
 });
