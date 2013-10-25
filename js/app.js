@@ -1,5 +1,10 @@
 window.App = {};
 
+// そのまま Backbone.Events を代入すると
+// mediator を変更することで Backbone.Events が変わってしまう
+// Backbone.Events をディープコピーするために extend を使う
+App.mediator = _.extend({}, Backbone.Events);
+
 $(function(){
   var schedules = new App.Schedules();
 
@@ -20,6 +25,11 @@ $(function(){
     collection: schedules
   });
   App.formDialogView = formDialogView;
+
+  var calendarControlView = new App.CalendarControlView({
+    el: '.calendar-control',
+    collection: schedules
+  });
 
   $('.calendar-newBtn').on('click', function(){
     formDialogView.open();

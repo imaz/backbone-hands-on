@@ -158,3 +158,25 @@ App.FormDialogView = Backbone.View.extend({
     alert(message);
   }
 });
+
+App.CalendarControlView = Backbone.View.extend({
+  events: {
+    'click .calendar-newBtn': 'onClickNew',
+    'click .calendar-prevBtn': 'onClickPrev',
+    'click .calendar-nextBtn': 'onClickNext',
+    'click .calendar-todayBtn': 'onClickToday'
+  },
+  onClickNew: function(e){
+    App.mediator.trigger('dialog:open');
+  },
+  onClickPrev: function(e){
+    App.mediator.trigger('dialog:prev');
+    alert('hi');
+  },
+  onClickNext: function(e){
+    App.mediator.trigger('dialog:next');
+  },
+  onClickToday: function(e){
+    App.mediator.trigger('dialog:today');
+  }
+});
