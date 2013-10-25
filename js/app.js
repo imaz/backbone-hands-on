@@ -3,6 +3,7 @@ window.App = {};
 // そのまま Backbone.Events を代入すると
 // mediator を変更することで Backbone.Events が変わってしまう
 // Backbone.Events をディープコピーするために extend を使う
+// Chrome Developer tools > Resources tab > Local Storage で確認できる
 App.mediator = _.extend({}, Backbone.Events);
 
 $(function(){

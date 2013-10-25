@@ -3,6 +3,10 @@ App.Schedule = Backbone.Model.extend({
     title: '予定あり',
     datetime: null
   },
+  parse: function(attrs){
+    attrs.datetime = moment(attrs.datetime);
+    return attrs;
+  },
   validate: function(attrs){
     if(!attrs.title){
       return 'タイトルは必須です!!'
