@@ -28,7 +28,7 @@ App.Schedules = Backbone.Collection.extend({
   // html5から入ったwebStrageの機能のうちの一つ
   // ドメインとポートの組み合わせでオリジンができる
   // 同一オリジン内で共通のデータを使うことができる
-  localStrage: new Backbone.LocalStorage('calendar'),
+  localStorage: new Backbone.LocalStorage('calendar'),
 
   findByDate: function(date){
     var format = 'YYYY-MM-DD';
