@@ -129,6 +129,8 @@ App.FormDialogView = Backbone.View.extend({
   initialize: function(){
     this.$title = this.$('input[name="title"]')
     this.$datetime = this.$('input[name="datetime"]')
+
+    this.listenTo(this.collection, 'change', this.close);
   },
   render: function(){
     this.$title.val(this.model.get('title'));
@@ -148,6 +150,10 @@ App.FormDialogView = Backbone.View.extend({
 
     var title = this.$title.val();
     var datetime = this.$datetime.val();
-    console.log(title,datetime);
+
+    this.model.set({
+      title: title || undefined,
+      datetime: moment(datetime)
+    }, {validate: true});
   }
 });
