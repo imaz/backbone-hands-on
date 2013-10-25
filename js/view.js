@@ -133,14 +133,15 @@ App.FormDialogView = Backbone.View.extend({
     this.listenTo(App.mediator, 'dialog:close', this.close);
   },
   render: function(){
-    if(this.model){
-      this.$title.val(this.model.get('title'));
-      this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
-      this.$('.dialog-removeBtn').show();
-    } else {
-      this.$datetime.val(moment().format('YYYY-MM-DDTHH:mm'));
+    this.$title.val(this.model.get('title'));
+    this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
+
+    if(this.model.isNew()){
       this.$('.dialog-removeBtn').hide();
+    } else {
+      this.$('.dialog-removeBtn').show();
     }
+
     this.$el.show();
   },
 
