@@ -144,7 +144,10 @@ App.FormDialogView = Backbone.View.extend({
   },
 
   open: function(model){
-    this.model = model;
+    this.model = model || new this.collection.model({
+      title: '',
+      datetime: moment()
+    });
     this.render();
   },
   close: function(){
