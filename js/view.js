@@ -121,7 +121,14 @@ App.CalendarItemView = Backbone.View.extend({
 });
 
 App.FormDialogView = Backbone.View.extend({
+  events: {
+    'click .dialog-close': 'close'
+  },
+
   open: function(){
     this.$el.show();
+  },
+  close: function(){
+    this.$el.hide();
   }
 });
