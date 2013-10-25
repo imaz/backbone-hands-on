@@ -21,13 +21,7 @@ App.CalendarView = Backbone.View.extend({
     this.current = moment();
     this.render();
 
-    // 以下のふたつの書き方は同じ動作をする
-    // View で Model を監視する場合は listenTo を使うのが好ましい
-    // on すると collection remove した時に off しなければならない
-    // listenTo は stopListening する必要があるがデフォルトの remove メソッドで呼んでいるので安心ある！
-
-    // this.collection.on('add', this.render, this);
-    this.listenTo(this.collection, 'add', this.render);
+    this.listenTo(this.collection, 'add change', this.render);
   },
   render: function(){
     // this.el, this.$el などが使える
