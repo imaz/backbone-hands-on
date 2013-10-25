@@ -1,8 +1,5 @@
 App.CalendarView = Backbone.View.extend({
   initialize: function(){
-    this.current = moment();
-    this.render();
-
     this.listenTo(this.collection, 'add change remove', this.render);
     this.listenTo(App.mediator, 'calendar:prev', this.toPrev);
     this.listenTo(App.mediator, 'calendar:next', this.toNext);
