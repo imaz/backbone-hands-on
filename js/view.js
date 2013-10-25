@@ -116,7 +116,7 @@ App.CalendarItemView = Backbone.View.extend({
   },
 
   onClick: function(){
-    App.formDialogView.open();
+    App.formDialogView.open(this.model);
   }
 });
 
@@ -125,8 +125,19 @@ App.FormDialogView = Backbone.View.extend({
     'click .dialog-close': 'close'
   },
 
-  open: function(){
+  initialize: function(){
+    this.$title = this.$('input[name="title"]')
+    this.$datetime = this.$('input[name="datetime"]')
+  },
+  render: function(){
+    this.$title.val(this.model.get('title'));
+    this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
     this.$el.show();
+  },
+
+  open: function(model){
+    this.model = model;
+    this.render();
   },
   close: function(){
     this.$el.hide();
