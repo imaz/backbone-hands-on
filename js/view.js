@@ -122,8 +122,8 @@ App.FormDialogView = Backbone.View.extend({
   },
 
   initialize: function(){
-    this.$title = this.$('input[name="title"]')
-    this.$datetime = this.$('input[name="datetime"]')
+    this.$title = this.$('input[name="title"]');
+    this.$datetime = this.$('input[name="datetime"]');
 
     this.listenTo(this.collection, 'add change remove', this.close);
   },
@@ -131,6 +131,7 @@ App.FormDialogView = Backbone.View.extend({
     if(this.model){
       this.$title.val(this.model.get('title'));
       this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
+      this.$('.dialog-removeBtn').show();
     }
     this.$el.show();
   },
@@ -143,6 +144,7 @@ App.FormDialogView = Backbone.View.extend({
     this.$el.hide();
     this.$title.val('');
     this.$datetime.val('');
+    this.$('.dialog-removeBtn').hide();
   },
   onSubmit: function(e){
     e.preventDefault();
