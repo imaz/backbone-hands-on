@@ -95,6 +95,10 @@ App.CalendarCellView = Backbone.View.extend({
 })
 
 App.CalendarItemView = Backbone.View.extend({
+  events: {
+    'click': 'onClick'
+  },
+
   tagName: 'li',
   template:
     '<time><%= date %></time>' +
@@ -109,5 +113,15 @@ App.CalendarItemView = Backbone.View.extend({
     });
 
     this.$el.html(html);
+  },
+
+  onClick: function(){
+    App.formDialogView.open();
+  }
+});
+
+App.FormDialogView = Backbone.View.extend({
+  open: function(){
+    this.$el.show();
   }
 });

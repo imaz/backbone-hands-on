@@ -20,6 +20,12 @@ $(function(){
     collection: schedules
   });
 
+  var formDialogView = new App.FormDialogView({
+    el: '.dialog',
+    collection: schedules
+  });
+  App.formDialogView = formDialogView;
+
   $('.calendar-prevBtn').on('click', function(){
     calendarView.toPrev();
   });
