@@ -141,6 +141,8 @@ App.FormDialogView = Backbone.View.extend({
   },
   close: function(){
     this.$el.hide();
+    this.$title.val('');
+    this.$datetime.val('');
   },
   onSubmit: function(e){
     e.preventDefault();
