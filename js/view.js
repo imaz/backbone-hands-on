@@ -150,10 +150,17 @@ App.FormDialogView = Backbone.View.extend({
     var title = this.$title.val();
     var datetime = this.$datetime.val();
 
-    this.model.set({
-      title: title || undefined,
-      datetime: moment(datetime)
-    }, {validate: true});
+    if(this.model){
+      this.model.set({
+        title: title || undefined,
+        datetime: moment(datetime)
+      }, {validate: true});
+    } else {
+      this.collection.add({
+        title: title || undefined,
+        datetime: moment(datetime)
+      }, {validate: true});
+    }
   },
   onRemove: function(e){
     e.preventDefault();
