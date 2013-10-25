@@ -32,6 +32,7 @@ $(function(){
       '*default': 'today' // *all とかでもなんでもいい
     },
     calendars: function(year, month){
+      this.calendarView.moveTo(year, month);
     },
     today: function(){
       this.calendarView.toToday();

@@ -50,6 +50,12 @@ App.CalendarView = Backbone.View.extend({
     this.render();
 
     App.router.navigate();
+  },
+  moveTo: function(year, month){
+    this.current = moment({year: year, month: month-1});
+    this.render();
+
+    App.router.navigate(this.current.format('YYYY/MM'));
   }
 });
 
