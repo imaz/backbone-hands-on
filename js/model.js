@@ -29,8 +29,13 @@ App.Schedules = Backbone.Collection.extend({
     var format = 'YYYY-MM-DD';
     var targetDate = moment(date).format(format);
 
-    return this.select(function(model) {
-      return model.formatDateTime(format) === targetDate;
-    });
+    return this.chain()
+      .filter(function(model){
+        return model.formatDateTime(format) === targetDate;
+      })
+      .sortBy(function(model){
+        return model.get('datetime').valueOf();
+      })
+      .value();
   }
 });
