@@ -38,8 +38,20 @@ App.CalendarView = Backbone.View.extend({
       var $tr = $('<tr>');
       for (var i = 0; i < 7; i++){
         var $td = $('<td>');
-        $td.text(currentDay.format('DD'));
+
+        var $date = $('<div class="calendar-date">');
+        $date.text(currentDay.format('DD'));
+
+        var $ul = $('<ul class="calendar-list">');
+        _.each(this.collection.findByDate(currentDay), function(schedule){
+          var $li = $('<li>');
+          $li.text(schedule.show());
+          $ul.append($li);
+        });
+
+        $td.append($date, $ul)
         $tr.append($td);
+
         currentDay.add(1, 'day');
       }
       $tr.appendTo($tbody);
