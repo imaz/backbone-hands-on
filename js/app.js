@@ -8,6 +8,7 @@ App.mediator = _.extend({}, Backbone.Events);
 
 $(function(){
   var schedules = new App.Schedules();
+  schedules.fetch();
 
   var calendarView = new App.CalendarView({
     el: '.calendar',
