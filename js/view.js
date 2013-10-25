@@ -125,7 +125,7 @@ App.FormDialogView = Backbone.View.extend({
     this.$title = this.$('input[name="title"]')
     this.$datetime = this.$('input[name="datetime"]')
 
-    this.listenTo(this.collection, 'change remove', this.close);
+    this.listenTo(this.collection, 'add change remove', this.close);
   },
   render: function(){
     if(this.model){
