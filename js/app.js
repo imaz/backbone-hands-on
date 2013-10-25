@@ -26,6 +26,11 @@ $(function(){
         el: '.calendar-control',
         collection: schedules
       });
+
+      this.listenTo(App.mediator, 'route:change', this.changeRoute);
+    },
+    changeRoute: function(route){
+      this.navigate(route);
     },
     routes: {
       ':year/:month': 'calendars',
@@ -39,6 +44,6 @@ $(function(){
     }
   });
 
-  App.router = new Router();
+  new Router();
   Backbone.history.start();
 });
