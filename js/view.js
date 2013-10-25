@@ -95,7 +95,7 @@ App.CalendarItemView = Backbone.View.extend({
   },
 
   onClick: function(){
-    App.formDialogView.open(this.model);
+    App.mediator.trigger('dialog:open', this.model);
   }
 });
 

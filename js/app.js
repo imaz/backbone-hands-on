@@ -24,7 +24,6 @@ $(function(){
     el: '.dialog',
     collection: schedules
   });
-  App.formDialogView = formDialogView;
 
   var calendarControlView = new App.CalendarControlView({
     el: '.calendar-control',
