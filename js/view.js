@@ -4,6 +4,9 @@ App.CalendarView = Backbone.View.extend({
     this.render();
 
     this.listenTo(this.collection, 'add change remove', this.render);
+    this.listenTo(App.mediator, 'calendar:prev', this.toPrev);
+    this.listenTo(App.mediator, 'calendar:next', this.toNext);
+    this.listenTo(App.mediator, 'calendar:today', this.toToday);
   },
   render: function(){
     // this.el, this.$el などが使える
@@ -172,7 +175,6 @@ App.CalendarControlView = Backbone.View.extend({
   },
   onClickPrev: function(e){
     App.mediator.trigger('calendar:prev');
-    alert('hi');
   },
   onClickNext: function(e){
     App.mediator.trigger('calendar:next');
