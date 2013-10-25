@@ -128,8 +128,10 @@ App.FormDialogView = Backbone.View.extend({
     this.listenTo(this.collection, 'change remove', this.close);
   },
   render: function(){
-    this.$title.val(this.model.get('title'));
-    this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
+    if(this.model){
+      this.$title.val(this.model.get('title'));
+      this.$datetime.val(this.model.formatDateTime('YYYY-MM-DDTHH:mm'));
+    }
     this.$el.show();
   },
 

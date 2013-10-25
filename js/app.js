@@ -26,6 +26,10 @@ $(function(){
   });
   App.formDialogView = formDialogView;
 
+  $('.calendar-newBtn').on('click', function(){
+    formDialogView.open();
+  });
+
   $('.calendar-prevBtn').on('click', function(){
     calendarView.toPrev();
   });
