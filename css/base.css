@@ -3,7 +3,12 @@
   color: #cdf;
 }
 
+.red-neon {
+  background-color: #411;
+  color: #faa;
+}
+
 .yellow-neon {
-  background-color: #222;
-  color: #dd6;
+  background-color: #332;
+  color: #ff9;
 }
