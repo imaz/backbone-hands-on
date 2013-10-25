@@ -113,6 +113,7 @@ App.FormDialogView = Backbone.View.extend({
     this.listenTo(this.collection, 'add change remove', this.close);
     this.listenTo(this.collection, 'invalid', this.onError);
     this.listenTo(App.mediator, 'dialog:open', this.open);
+    this.listenTo(App.mediator, 'dialog:close', this.close);
   },
   render: function(){
     if(this.model){
