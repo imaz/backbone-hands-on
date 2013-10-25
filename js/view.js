@@ -109,6 +109,7 @@ App.FormDialogView = Backbone.View.extend({
 
     this.listenTo(this.collection, 'add change remove', this.close);
     this.listenTo(this.collection, 'invalid', this.onError);
+    this.listenTo(App.mediator, 'dialog:open', this.open);
   },
   render: function(){
     if(this.model){
@@ -170,13 +171,13 @@ App.CalendarControlView = Backbone.View.extend({
     App.mediator.trigger('dialog:open');
   },
   onClickPrev: function(e){
-    App.mediator.trigger('dialog:prev');
+    App.mediator.trigger('calendar:prev');
     alert('hi');
   },
   onClickNext: function(e){
-    App.mediator.trigger('dialog:next');
+    App.mediator.trigger('calendar:next');
   },
   onClickToday: function(e){
-    App.mediator.trigger('dialog:today');
+    App.mediator.trigger('calendar:today');
   }
 });
