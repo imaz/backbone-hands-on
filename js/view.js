@@ -59,14 +59,18 @@ App.CalendarView = Backbone.View.extend({
 });
 
 App.CalendarCellView = Backbone.View.extend({
+  events: {
+    'click': 'onClick'
+  },
   tagName: 'td', // new したときに要素ができる elと同じ
+  template:
+    '<div class="calendar-date"><%= date.format("MM/DD") %></div>' +
+    '<ul class="calendar-list"></ul>',
+
   initialize: function(options){
     this.date = options.date;
     this.render();
   },
-  template:
-    '<div class="calendar-date"><%= date.format("MM/DD") %></div>' +
-    '<ul class="calendar-list"></ul>',
   render: function(){
     var html = _.template(this.template, {date: this.date});
     this.$el.html(html);
@@ -78,6 +82,10 @@ App.CalendarCellView = Backbone.View.extend({
     });
 
     this.$el.append($ul);
+  },
+  onClick: function(){
+    var model = new App.Schedule({title: '', datetime: this.date});
+    App.mediator.trigger('dialog:open', model);
   }
 })
 
@@ -154,10 +162,10 @@ App.FormDialogView = Backbone.View.extend({
       datetime: moment(datetime)
     };
 
-    if(this.model){
-      this.model.save(params, {validate: true});
-    } else {
+    if(this.model.isNew()){
       this.collection.create(params, {validate: true});
+    } else {
+      this.model.save(params, {validate: true});
     }
   },
   onRemove: function(e){
