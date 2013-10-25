@@ -126,6 +126,7 @@ App.FormDialogView = Backbone.View.extend({
     this.$datetime = this.$('input[name="datetime"]');
 
     this.listenTo(this.collection, 'add change remove', this.close);
+    this.listenTo(this.collection, 'invalid', this.onError);
   },
   render: function(){
     if(this.model){
@@ -170,5 +171,8 @@ App.FormDialogView = Backbone.View.extend({
     if(window. confirm('削除しますか？')){
       this.model.destroy();
     }
+  },
+  onError: function(model, message){
+    alert(message);
   }
 });
