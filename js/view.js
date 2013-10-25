@@ -20,6 +20,8 @@ App.CalendarView = Backbone.View.extend({
   initialize: function(){
     this.current = moment();
     this.render();
+
+    this.collection.on('add', this.render, this);
   },
   render: function(){
     // this.el, this.$el などが使える
